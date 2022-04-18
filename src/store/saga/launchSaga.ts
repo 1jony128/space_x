@@ -1,8 +1,15 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
-import { call, put, StrictEffect, takeEvery } from "redux-saga/effects"
+import { call, put, takeEvery } from "redux-saga/effects"
 import { ILaunch, ILaunchFetch } from "../../models/ILaunch";
-import { fetchSingleLaunch, fetchSingleLaunchSuccess, IupdateLaunches, launchFetchingError, launchFetchingSuccess, updatedLaunches, updateLaunches } from "../reducers/LaunchSlice";
+import { 
+    fetchSingleLaunchSuccess, 
+    IupdateLaunches, 
+    launchFetchingError, 
+    launchFetchingSuccess, 
+    updatedLaunches, 
+    updateLaunches 
+} from "../reducers/LaunchSlice";
 
 const fetchLaunches = () =>  axios.get<ILaunch[]>("https://api.spacexdata.com/v5/launches");
 const fetchLaunch = (id: string) =>  axios.get<ILaunch>(`https://api.spacexdata.com/v5/launches/${id}`);

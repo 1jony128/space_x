@@ -43,8 +43,8 @@ function App() {
         </div>
         <BrowserRouter>
           <Routes>
-          <Route path='/'element={<TableLaunhes launches={launches}/>}/>
-          <Route path='/:id'element={<SingleLaunch />}/>
+            <Route path='/'element={<TableLaunhes launches={launches}/>}/>
+            <Route path='/:id'element={<SingleLaunch />}/>
           </Routes>
         </BrowserRouter>
       </div>
