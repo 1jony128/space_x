@@ -25,11 +25,8 @@ const Card: FC<ICard> = ({draggable, launch, setCurrentCard, currentCard, name }
 
     const dragDropHundler = ((e: React.DragEvent<HTMLDivElement>, launch: ILaunch) => {
         e.preventDefault()
-        console.log("взял:", currentCard && currentCard.name)
-        console.log("положил на:", launch.name)
         if(currentCard){
             const currentIndex = launches.indexOf(currentCard);
-            console.log(currentIndex)
             const updateLaunch = { currentIndex, name, currentCard }
             dispatch(updateLaunches(updateLaunch))
         }

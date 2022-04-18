@@ -1,5 +1,7 @@
+import { Alert, Stack } from "@mui/material";
 import { FC, useState } from "react";
 import Column from "../components/Column";
+import Notification from "../components/Notification";
 import { columns, IColumn } from "../helpers/columns";
 import { ILaunch } from "../models/ILaunch";
 
@@ -26,6 +28,7 @@ const TableLaunhes: FC<ITableLaunhes> = ({launches}) => {
                     />
                 })
             }
+            <Notification />
         </div>
 
     );
