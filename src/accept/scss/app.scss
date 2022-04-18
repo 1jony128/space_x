@@ -83,6 +83,18 @@ h2{
     justify-content: space-between;
     flex-direction: column;
     padding: 15px;
+    padding-bottom: 50px;
+    button{
+      height: 30px;
+      background: #fff;
+      box-shadow: none;
+      border: 1px solid $bgColor2;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover{
+        background: $hover;
+      }
+    }
     .content{
       display: flex;
       justify-content: space-between;

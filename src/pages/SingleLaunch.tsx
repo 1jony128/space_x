@@ -1,8 +1,6 @@
-import { FC, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useParams } from 'react-router-dom';
+import { FC } from "react";
+import { Link } from 'react-router-dom';
 import { useAppSelector } from "../hooks/redux";
-import { fetchSingleLaunch } from "../store/reducers/LaunchSlice";
 interface ISingleLaunch {
    
 }

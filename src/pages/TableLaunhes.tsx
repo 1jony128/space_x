@@ -1,4 +1,3 @@
-import { Alert, Stack } from "@mui/material";
 import { FC, useState } from "react";
 import Column from "../components/Column";
 import Notification from "../components/Notification";
@@ -11,7 +10,6 @@ interface ITableLaunhes {
 
 const TableLaunhes: FC<ITableLaunhes> = ({launches}) => {
 
-    // console.log(launches)
     const [currentCard, setCurrentCard] = useState<ILaunch>();
 
     return (  

@@ -19,10 +19,6 @@ const transformData = (response: ILaunch[]) => {
             booked: false,
             type: type
         }
-        
-        if(dataItem.id === "5eb87cd9ffd86e000604b32a" || dataItem.id === "5eb87ce2ffd86e000604b335" || dataItem.id === "5eb87ceeffd86e000604b341"){
-            dataItem.booked = true;
-        }
 
         return dataItem;
     })
