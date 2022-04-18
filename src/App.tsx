@@ -5,6 +5,8 @@ import './accept/scss/app.scss'
 import { useAppSelector } from './hooks/redux';
 import TableLaunhes from './pages/TableLaunhes';
 import { launchFetching } from './store/reducers/LaunchSlice';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SingleLaunch from './pages/SingleLaunch';
 
 
 
@@ -15,9 +17,7 @@ function App() {
   const {launches, isLoading, error} = useAppSelector(state => state.launchReducer)
 
   useEffect(() => {
-    console.log("dsa")
     dispatch(launchFetching())
-    console.log("first")
   }, [dispatch])
 
   if(isLoading){
@@ -41,7 +41,12 @@ function App() {
         <div className='header'>
          <h1>Expore the space</h1>
         </div>
-        <TableLaunhes launches={launches}/>
+        <BrowserRouter>
+          <Routes>
+          <Route path='/'element={<TableLaunhes launches={launches}/>}/>
+          <Route path='/:id'element={<SingleLaunch />}/>
+          </Routes>
+        </BrowserRouter>
       </div>
   );
   

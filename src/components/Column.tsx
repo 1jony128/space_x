@@ -2,7 +2,7 @@ import { Dispatch, FC, SetStateAction } from "react";
 import { useDispatch } from "react-redux";
 import { IColumn } from "../helpers/columns";
 import { ILaunch } from "../models/ILaunch";
-import { updateLaunches } from "../store/reducers/LaunchSlice";
+import { updatedLaunches, updateLaunches } from "../store/reducers/LaunchSlice";
 import Card from "./Card";
 
 interface IColumnState {
@@ -21,10 +21,17 @@ const Column: FC<IColumnState> = ({name, draggable, launches, setCurrentCard, cu
 
     const dragDropHundler = ((e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
-        if(currentCard){
+        const isEmpty = launches.find(item => item.type === "launches")
+        if(currentCard && !isEmpty && name === "launches"){
             const currentIndex = launches.indexOf(currentCard);
             const updateLaunch = { currentIndex, name, currentCard }
             dispatch(updateLaunches(updateLaunch))
+            setTimeout(() => dispatch(updatedLaunches()), 2000)
+        } else if(currentCard && name === "myLaunches"){
+            const currentIndex = launches.indexOf(currentCard);
+            const updateLaunch = { currentIndex, name, currentCard }
+            dispatch(updateLaunches(updateLaunch))
+            setTimeout(() => dispatch(updatedLaunches()), 2000)
         }
         
     })

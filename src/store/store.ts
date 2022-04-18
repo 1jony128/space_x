@@ -1,8 +1,6 @@
-import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import { applyMiddleware } from "redux";
 import launchReducer from "./reducers/LaunchSlice";
-import LaunchesSaga from "./saga/launchSaga";
 import rootSaga from "./saga/RootSaga";
 
 

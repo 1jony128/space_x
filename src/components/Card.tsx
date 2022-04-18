@@ -1,9 +1,11 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { IColumn } from "../helpers/columns";
 import { useAppSelector } from "../hooks/redux";
 import { ILaunch } from "../models/ILaunch";
-import { updateLaunches } from "../store/reducers/LaunchSlice";
+import { fetchSingleLaunch, updatedLaunches, updateLaunches } from "../store/reducers/LaunchSlice";
+
 
 interface ICard {
     draggable: boolean;
@@ -14,6 +16,7 @@ interface ICard {
 }
 
 const Card: FC<ICard> = ({draggable, launch, setCurrentCard, currentCard, name }) => {
+
 
     const dispatch = useDispatch();
 
@@ -29,41 +32,29 @@ const Card: FC<ICard> = ({draggable, launch, setCurrentCard, currentCard, name }
             const currentIndex = launches.indexOf(currentCard);
             const updateLaunch = { currentIndex, name, currentCard }
             dispatch(updateLaunches(updateLaunch))
+            setTimeout(() => dispatch(updatedLaunches()), 2000)
         }
 
     })
 
-    return (  
-    <div 
-        className={`card ${draggable && "draggable"}`} 
-        draggable={draggable}
-        onDragStart={(e) => dragStartHundler(e, launch)}
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => dragDropHundler(e, launch)}
-    >
-        <h3>{launch.name}</h3>
-        <span>Falcon 9</span>
-    </div>
+    const showCard = () => {
+        dispatch(fetchSingleLaunch(`${launch.id}`))
+    }
+
+    return (
+    <Link to={`/${launch.id}`} onClick={showCard}>
+        <div 
+            className={`card ${draggable && "draggable"}`} 
+            draggable={draggable}
+            onDragStart={(e) => dragStartHundler(e, launch)}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => dragDropHundler(e, launch)}
+        >
+            <h3>{launch.name}</h3>
+            <span>Falcon 9</span>
+        </div>
+    </Link>
     );
 }
 
 export default Card;
-
-// import { FC } from "react";
-// // import { ICard } from "../helpers/Cards";
-
-
-
-// const Card: FC<ICard> = ({name, draggable}) => {
-
-
-
-//     return (  
-//     <div className="card" draggable={draggable}>
-//         <h3>Saocon 1a</h3>
-//         <span>Falcon 9</span>
-//     </div>
-//     );
-// }
-
-// export default Card;
