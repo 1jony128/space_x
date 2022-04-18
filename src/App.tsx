@@ -7,6 +7,7 @@ import TableLaunhes from './pages/TableLaunhes';
 import { launchFetching } from './store/reducers/LaunchSlice';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SingleLaunch from './pages/SingleLaunch';
+import Skeleton from './components/Skeleton';
 
 
 
@@ -21,9 +22,12 @@ function App() {
   }, [dispatch])
 
   if(isLoading){
-    return <div className="App">
-      Loading
-    </div>
+    return <div className='container'>
+              <div className='header'>
+                <h1>Loading</h1>   
+              </div>
+              <Skeleton />
+            </div>
   }
 
   if(error){

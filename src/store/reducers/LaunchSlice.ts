@@ -121,7 +121,7 @@ const updateLaunchesFunc = (state: ILaunchSlice, action: PayloadAction<IupdateLa
         state.alert.severity = "success"
         state.launches[currentIndex] = updateLaunch
     } else if(name === "launches"){
-        if(confirm("подтвердить отмену бронирования?")){
+        if(confirm("Подтвердить отмену бронирования?")){
             const updateLaunch = {
                 id: currentCard.id, 
                 name: currentCard.name, 
